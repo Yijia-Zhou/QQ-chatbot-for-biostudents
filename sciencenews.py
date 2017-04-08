@@ -32,7 +32,7 @@ class ScienceNewsDB(object):
     def update_news(self):
         self.news = retrieve_science_news(self.rssurls)
 
-    def get_science_news(self, number=1):
+    def get_science_news(self, number):
         return random.sample(self.news, number)
 
 def parse_rss(rssurl):
