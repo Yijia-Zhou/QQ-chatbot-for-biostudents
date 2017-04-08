@@ -18,7 +18,7 @@ import sciencenews
 @qqbotslot
 def onQQMessage(bot, contact, member, content):
     '''
-    对 QQ 消息进行相应的主函数，各种聊天消息统一进行处理。
+    对 QQ 消息进行响应的主函数，各种聊天消息统一进行处理。
     '''
     print('From ' + str(contact))
     content = content.strip()
