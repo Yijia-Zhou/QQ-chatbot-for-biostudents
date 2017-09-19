@@ -57,8 +57,9 @@ def onQQMessage(bot, contact, member, content):
 
 
     elif '@ME' in content or '@keyanAI' in content:
-        if content.strip('[@ME] ').strip()[0] in '123':
-            news = sciencenews.db.get_science_news(int(content.strip()[0]))
+        firstDigit = content.strip('[@ME]').strip()[0]
+        if firstDigit in '123':
+            news = sciencenews.db.get_science_news(int(firstDigit))
             for new in news:
                 bot.SendTo(contact, new + '\n')
                 time.sleep(random.choice(range(4, 11)))
