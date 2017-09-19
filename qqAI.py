@@ -20,7 +20,6 @@ def onQQMessage(bot, contact, member, content):
     '''
     对 QQ 消息进行响应的主函数，各种聊天消息统一进行处理。
     '''
-    print('From ' + str(contact))
     content = content.strip()
     if content == '-stop':
         bot.SendTo(contact, 'QQ机器人已关闭')
@@ -70,22 +69,21 @@ def onQQMessage(bot, contact, member, content):
 论文标题 + @scihub 可获得 scihub 提供的下载链接
 @我获得使用指南，想随便聊聊的话就用@chat结尾吧O(∩_∩)O''')
 
-'''
-@qqbotslot
-def onNewContact(bot, contact, owner):
-    ' ''
-    # 当新增 好友/群/讨论组/群成员/讨论组成员 时被调用
-    # bot     : QQBot 对象
-    # contact : QContact 对象，代表新增的联系人
-    # owner   : QContact 对象，仅在新增 群成员/讨论组成员 时有效，代表新增成员所在的 群/讨论组
-    '' '
-    print('New Contact: ' + str(owner))
-    bot.SendTo(contact, ' ''你好，我是科研小 AI, 我目前的功能有：
-关键词 + @pubmed 可获得检索结果页面链接和前四条结果
-数字1-3加 @keyanAI 可获得指定数量的生命科学相关新闻
-论文标题 + @scihub 可获得 scihub 提供的下载链接
-@我获得使用指南，想随便聊聊的话就用@chat结尾吧O(∩_∩)O' '')
-'''
+
+# @qqbotslot
+# def onNewContact(bot, contact, owner):
+#     '''
+#     # 当新增 好友/群/讨论组/群成员/讨论组成员 时被调用
+#     # bot     : QQBot 对象
+#     # contact : QContact 对象，代表新增的联系人
+#     # owner   : QContact 对象，仅在新增 群成员/讨论组成员 时有效，代表新增成员所在的 群/讨论组
+#     '''
+#     print('New Contact: ' + str(owner))
+#     bot.SendTo(contact, '''你好，我是科研小 AI, 我目前的功能有：
+# 关键词 + @pubmed 可获得检索结果页面链接和前四条结果
+# 数字1-3加 @keyanAI 可获得指定数量的生命科学相关新闻
+# 论文标题 + @scihub 可获得 scihub 提供的下载链接
+# @我获得使用指南，想随便聊聊的话就用@chat结尾吧O(∩_∩)O''')
 
 def getPubmed(url):
     '''
