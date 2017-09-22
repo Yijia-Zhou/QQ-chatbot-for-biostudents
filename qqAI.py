@@ -56,7 +56,10 @@ def onQQMessage(bot, contact, member, content):
 
 
     elif '@ME' in content or '@keyanAI' in content:
-        firstDigit = content.strip('[@ME]').strip()[0]
+        try:
+            firstDigit = content.strip('[@ME]').strip()[0]
+        except IndexError:
+            firstDigit = 'Nothing'
         if firstDigit in '123':
             news = sciencenews.db.get_science_news(int(firstDigit))
             for new in news:
