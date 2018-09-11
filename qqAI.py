@@ -104,7 +104,7 @@ def getPubmed(url):
 
 def getScihub(keyword):
     '''
-    通过 keyword 查 PMID, 返回 scihub 提供的 'www.ncbi.nlm.nih.gov.sci-hub.cc/pubmed/' 下载链接，
+    通过 keyword 查 PMID, 返回 scihub 提供的 'www.ncbi.nlm.nih.gov.sci-hub.tw/pubmed/' 下载链接，
     并读取 doi 号方便手动在 scihub 输入。
     '''
     # pubhuburl = 'http://www.ncbi.nlm.nih.gov.secure.sci-hub.cc/pubmed/' + PMID
@@ -122,7 +122,7 @@ def getScihub(keyword):
     except StopIteration:
         h = requests.get(url)
         soup = BeautifulSoup(h.text, 'lxml')
-        PMID = soup.findAll('dd')[-2].span.text
+        PMID = soup.findAll('dd')[-2].text
     
     pubhuburl = 'http://www.ncbi.nlm.nih.gov.sci-hub.cc/pubmed/' + PMID
     respon = requests.get('http://www.ncbi.nlm.nih.gov/pubmed/' + PMID)
