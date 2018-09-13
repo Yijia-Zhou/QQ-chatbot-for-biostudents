@@ -9,6 +9,7 @@ import random
 import time
 import urllib.parse
 import requests
+import json
 from bs4 import BeautifulSoup
 
 from qqbot import QQBotSlot as qqbotslot, RunBot
@@ -46,11 +47,11 @@ def onQQMessage(bot, contact, member, content):
         bot.SendTo(contact, getScihub(keyword))
 
     elif content.endswith('@chat'):
-        senten = urllib.parse.quote(strQ2B(content[:-5]))
+        senten = content[:-5]
         time.sleep(random.choice(range(3, 7)))
         try:
-            response = requests.get('http://api.qingyunke.com/api.php?key=free&appid=0&msg=' + senten)
-            bot.SendTo(contact, response.json()['content'])
+            response = getChat(senten)
+            bot.SendTo(contact, response)
         except Exception as e:
             bot.SendTo(contact, str(e))
 
@@ -155,6 +156,37 @@ def strQ2B(ustring):
         rstring += chr(inside_code)
     return rstring
 
+def getChat(text_input):
+    url = 'http://openapi.tuling123.com/openapi/api/v2'
+    apikey = '59260be62b474b529ef48317f345eb2c'
+    req = {
+        "perception":
+        {
+            "inputText":
+            {
+                "text": text_input
+            },
+        "selfInfo":
+        {
+            "location":
+            {
+                "city": "广州",
+                "province": "广东",
+                "street": "新港西路"
+            }
+        }
+        },
+        "userInfo": 
+        {
+            "apiKey": "59260be62b474b529ef48317f345eb2c",
+            "userId": "Promoter"
+        }
+    }
+    
+    req = json.dumps(req).encode('utf8')
+    r = requests.post(url, data=req, headers={'content-type': 'application/json'})
+    res = dict(r.json())['results'][0]['values']['text']
+    return res
 
 if __name__ == '__main__':
     RunBot()
