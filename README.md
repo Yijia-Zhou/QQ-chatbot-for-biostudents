@@ -1,5 +1,9 @@
 # README
 
+qqbot 已经不能用了，这个项目也就作废了。
+
+___
+
 此 QQ 聊天机器人基于 Python 第三方库 [qqbot](https://github.com/pandolia/qqbot) 开发，运行于 Python 3.5+, 提供查询科研新闻，pubmed 及 scihub 检索功能。主要使用 requests & beautifulsoup 包进行对 pubmed 检索结果的获取和解析，使用 feedparser 模块解析 rss 源获取新闻（于 sciencenews.py 模块中）。
 
 由于短时间大量发送消息会被封号，大量使用 time.sleep 进行休眠。
